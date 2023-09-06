@@ -8,7 +8,7 @@ namespace API.Entities
         public Guid ID { get; set; }
         public string Barcode { get; set; }
         public string EmpNo { get; set; }
-        // public Byte[] SnapShot { get; set; }
+        public Byte[] SnapShot { get; set; }
         public DateTime Stamp { get; set; }
         public string Remark { get; set; }
         public string Repack { get; set; }

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")] // /api/barcodeInvalids
+    [Route("api/[controller]")] // /api/barcodeinvalids
     public class BarcodeInvalidsController : ControllerBase
     {
         private readonly DataContext _context;
@@ -33,13 +33,14 @@ namespace API.Controllers
         //     return results;
         // }
 
-        [HttpGet("{empno}")] // /api/users/2
+        [HttpGet("{empno}")] // /api/barcodeinvalids/2
         public async Task<ActionResult<BarcodeInvalid>> GetBarcodebyEmpno(string empno)
         {
             // return _context.Barcode_Invalid.Find(empno);
            
             var results = await _context.Barcode_Invalid
-            .Where(u => u.EmpNo.Equals(empno)).ToListAsync();
+            // .Where(u => u.EmpNo.Equals(empno)).ToListAsync();
+            .Where(u => u.Barcode.Equals(empno)).ToListAsync();
                 // .Select(u => new
                 // {
                 //     u.ID,
@@ -53,7 +54,5 @@ namespace API.Controllers
             
              return Ok(results);
         }
-
-
     }
 }
